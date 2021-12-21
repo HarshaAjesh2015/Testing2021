@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Threading;
@@ -24,8 +25,22 @@ namespace Testing2021
             IWebElement loginButton = driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]"));
             loginButton.Click();
 
-            
+            //try
+            //{
 
+            //     usernameTextbox = driver.FindElement(By.Id("UserName"));
+            //    usernameTextbox.SendKeys("hari");
+
+            //     passwordTextbox = driver.FindElement(By.Id("Password"));
+            //    passwordTextbox.SendKeys("123123");
+
+            //    loginButton = driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]"));
+            //    loginButton.Click();
+            //}
+            //catch(Exception.ex)
+            //{
+            //    Assert.Fail("Loginpage failed to launch".ex.Message);
+            //}
 
             IWebElement hellohari = driver.FindElement(By.XPath("//*[@id='logoutForm']/ul/li/a"));
 
@@ -103,13 +118,15 @@ namespace Testing2021
             editButton.Click();
 
             IWebElement descriptionEdit = driver.FindElement(By.Id("Description"));
+            descriptionEdit.Clear();
             descriptionEdit.SendKeys("Edit New Entry Testing2021");
+            Thread.Sleep(2000);
 
             IWebElement saveEditbutton = driver.FindElement(By.Id("SaveButton"));
             saveEditbutton.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
-            IWebElement editCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+            IWebElement editCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
           
             if (editCode.Text == "Edit New Entry Testing2021")
             {
@@ -118,8 +135,28 @@ namespace Testing2021
             else
             {
                 Console.WriteLine("Editing record failed,test failed.");
-            }
+          
+           }
 
+
+            administrationDropdown = driver.FindElement(By.XPath("/ html / body / div[3] / div / div / ul / li[5] / a"));
+            administrationDropdown.Click();
+
+
+            tmOption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
+            tmOption.Click();
+            Thread.Sleep(4000);
+
+            goToLastPageButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+        
+            goToLastPageButton.Click();
+            Thread.Sleep(4000);
+
+            IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[last()]/a[2]"));
+            
+            deleteButton.Click();
+            Thread.Sleep(2000);
+            driver.SwitchTo().Alert().Accept();
         }
 
 
