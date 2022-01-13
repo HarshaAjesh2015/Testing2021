@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Testing2021.Pages
 {
-    public class LoginPage
+     class LoginPage
     {
-        public void LoginSteps(IWebDriver driver)
+        public  void LoginSteps(IWebDriver driver)
         {
 
             driver.Manage().Window.Maximize();
