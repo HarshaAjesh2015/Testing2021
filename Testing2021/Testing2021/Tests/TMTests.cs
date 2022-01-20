@@ -36,7 +36,7 @@ namespace Testing2021
 
             // TM page object initialization and definition
             TMPage tmPageObj = new TMPage();
-            tmPageObj.EditTM(driver);
+            tmPageObj.EditTM(driver,"edited description","edited code");
         }
         [Test, Order(3), Description("Check if user is able to delete a material record with valid data")]
         public void DeleteTM_Test()
